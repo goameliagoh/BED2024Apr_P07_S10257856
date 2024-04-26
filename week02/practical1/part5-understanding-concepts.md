@@ -25,6 +25,8 @@ REST (Representational State Transfer) is an architectural style for designing A
 
 Following these guidelines ensures your API is predictable, easy to understand, and scalable.
 
+AKA REST API = a structured template of API so is easier to understand + follow etc !!
+
 **3. HTTP Methods:**
 
 HTTP methods are verbs that specify the intended action on a resource. Here are the common methods used in RESTful APIs:
@@ -49,8 +51,8 @@ HTTP status codes are three-digit codes that indicate the outcome of an HTTP req
 - 500 Internal Server Error: An unexpected error occurred on the server.
 
 By understanding these status codes, you can interpret the server's response to your API requests.
-
-### Understanding req.body and req.params in Express
+ 
+### Understanding req.body and req.params in Express ******!!!!!!!!!1
 
 In Express applications, `req.body` and `req.params` are two important properties of the req (request) object that provide access to different parts of the incoming HTTP request data. Here's a breakdown of each:
 

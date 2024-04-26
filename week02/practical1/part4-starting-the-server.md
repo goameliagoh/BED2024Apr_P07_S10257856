@@ -8,7 +8,14 @@
    });
 ```
 
+
+
+
 **2. Run the application:** In your terminal, run `node app.js`.
+--------> since app.js is in books-api file, then you need to navigate to your books-api folder first using 'cd books-api'
+-------> so from BED\MYREPO\BED2024Apr_P07_S10257856 in terminal to BED\MYREPO\BED2024Apr_P07_S10257856\books-api
+
+
 
 **3. Testing the API:**
 

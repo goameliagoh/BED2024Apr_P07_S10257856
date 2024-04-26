@@ -13,20 +13,19 @@ let books = [
 
 // ----------------------------------------------- MIDDLEWARES -----------------------------------------------------------------
 
+// <-- whenever have APP.USE(.....) , it means we r using MIDDLEWARE *****
 //are middlewares since it is 'app.use(...)' ---> it will read + process the request/data sent by client +  put the req in req.body thus all data client send will be in req.body
 // *************** When expecting client to send you data (almost always..), then will always need to write these code ********************
-  // parse incoming JSON data in requests
-  app.use(express.json())  // <-- whenever have APP.USE(.....) , it means we r using MIDDLEWARE *****
-  // Configure body-parser to handle URL-encoded form data
-  app.use(bodyParser.urlencoded({ extended: true })); // Set extended: true for nested objects
+  app.use(express.json())   // <<------------ to parse incoming reqs that are of JSON data type
+  app.use(bodyParser.urlencoded({ extended: true })); // <<------ to parse incoming data of URL data type (eg When HTML page uses forms)
 
 //-------------------------------------------------------------------------------------------------------------------------------
 
 
 // --------------------- GETTING ALL BOOKS ------------------------------
-  app.get('/books', (req, res => {
+  app.get('/books', (req, res) => {
     res.json(books); //Send the array of books in JSON format as reponse
-  }))
+  });
 //-----------===---------------------------------------------------------
 
   //-------------------- CREATING NEW BOOK --------------------------------
@@ -83,6 +82,13 @@ app.delete('/books/:id', (req, res) => {
       res.status(404).send('Book not found'); // Send error for non-existent book
     }
   });
+//-----------------------------------------------------------------------------------
+
+
+//---------------------------- START SERVER ------------------------------------ 
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
 //-----------------------------------------------------------------------------------
 
 
