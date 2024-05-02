@@ -6,6 +6,8 @@
 // MODEL = it interacts with database + manages/manipulate data etc
 // VIEW = your main file eg APP.JS  ++ what user sees
 // CONTROLLER = btwn model & view, handles user input + processes the HTTP requests 
+
+// ++ REFER TO WORD DOCS 4 NOTES on Node.js, Express, MVC relation !!!! 
 //-----------------------------------------------------------------------------------------
 
 // Import the modules needed
