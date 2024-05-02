@@ -4,7 +4,7 @@ const books = [
     { id: 2, title: "Pride and Prejudice", author: "Jane Austen" },
 ];
   
-class Book {
+class Book {  // <--- Format of making a class!
     constructor(id, title, author) {
       this.id = id;
       this.title = title;
