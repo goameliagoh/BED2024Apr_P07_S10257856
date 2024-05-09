@@ -5,7 +5,6 @@ const dbConfig = require("./dbConfig"); // ******* Different from ../dbConfig ==
 const bodyParser = require("body-parser"); // Import body-parser
 const validateBook = require("./middlewares/validateBook");
 
-
 const app = express();
 const port = process.env.PORT || 3000; // Use environment variable or default port
 
@@ -18,8 +17,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // For form data handling
 app.get("/books", bookController.getAllBooks);
 app.get("/books/:id", bookController.getBookById);
 app.post("/books", validateBook, bookController.createBook); // POST for creating books (can handle JSON data)
-app.put("/books/:id", booksController.updateBook); // PUT for updating books
-app.delete("/books/:id", booksController.deleteBook); // DELETE for deleting books
+app.put("/books/:id", bookController.updateBook); // PUT for updating books
+app.delete("/books/:id", bookController.deleteBook); // DELETE for deleting books
 
 
 app.listen(port, async () => {
