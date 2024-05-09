@@ -16,7 +16,7 @@ class Book {  // <--- Format of making a class!
     // STATIC EXAMPLE:
     // const result = mathClass.multiply(5,10) instead of const mathInstance = new mathClass(); then const result = mathInstance.multiply(5,10)
 
-    // ASYNC = your code need not run in sequence + can use AWAIT code!
+    // ASYNC = your code need not run in sequence + can use AWAIT code + CAN SEND MULTIPLE REQ!
     // SYNC = code will run in sequence
     //-------------------------------------------------------------------------------------------------
 

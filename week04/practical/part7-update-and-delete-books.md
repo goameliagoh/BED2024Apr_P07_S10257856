@@ -14,7 +14,7 @@ class Book {
     const sqlQuery = `UPDATE Books SET title = @title, author = @author WHERE id = @id`; // Parameterized query
 
     const request = connection.request();
-    request.input("id", id);
+    request.input("id", id); // Note how your SQL query needs title, author, id == > thats why here have them!
     request.input("title", newBookData.title || null); // Handle optional fields
     request.input("author", newBookData.author || null);
 
@@ -31,12 +31,12 @@ class Book {
     const sqlQuery = `DELETE FROM Books WHERE id = @id`; // Parameterized query
 
     const request = connection.request();
-    request.input("id", id);
+    request.input("id", id); // Bc sqlQuery requires you to enter the id value ===> thats why
     const result = await request.query(sqlQuery);
 
     connection.close();
 
-    return result.rowsAffected > 0; // Indicate success based on affected rows
+    return result.rowsAffected > 0; // This is a JS method that will give TRUE or FALSE. If row affected > 0, true. Otherwise, false 
   }
 }
 

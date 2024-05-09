@@ -20,30 +20,33 @@ class Book {
 
     const sqlQuery = `SELECT * FROM Books`; // Replace with your actual table name
 
-    const request = connection.request();
-    const result = await request.query(sqlQuery);
+    const request = connection.request(); // To make request with the SQL server connection
+    const result = await request.query(sqlQuery); // Request regarding 'sqlQuery' would be made & response made by SQL server wld be stored as 'result'.
 
     connection.close();
 
-    return result.recordset.map(
-      (row) => new Book(row.id, row.title, row.author)
-    ); // Convert rows to Book objects
+    return result.recordset.map(  // 'result.recordset' = response given by SQL server in rows/arragy format
+      (row) => new Book(row.id, row.title, row.author) // creating Book objects for each row.
+    );
   }
 
-  static async getBookById(id) {
-    const connection = await sql.connect(dbConfig);
+  static async getBookById(id) { // use 'async' so later can use 'await'
+    const connection = await sql.connect(dbConfig); 
 
-    const sqlQuery = `SELECT * FROM Books WHERE id = @id`; // Parameterized query
+    const sqlQuery = `SELECT * FROM Books WHERE id = @id`; // '@id' = placeholder for user input of id
 
     const request = connection.request();
-    request.input("id", id);
+    request.input("id", id); 
     const result = await request.query(sqlQuery);
 
     connection.close();
 
-    return result.recordset[0]
+
+    // is return [0] and not [id_that_user_wants] bc SQL query alrd states to get the details of book that matches the id that user gave. so output from that query should only have 1 record.
+    return result.recordset[0] 
+    // ? and : below is just saying that will check if any recordset can be found. if yes, new Book object created. if no, null returned.
       ? new Book(
-          result.recordset[0].id,
+          result.recordset[0].id, 
           result.recordset[0].title,
           result.recordset[0].author
         )

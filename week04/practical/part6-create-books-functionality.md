@@ -8,10 +8,12 @@ This step focuses on adding the functionality to create a new book record in you
 class Book {
   // ... existing code for constructor and getBookById
 
-  static async createBook(newBookData) {
+  static async createBook(newBookData) {  
     const connection = await sql.connect(dbConfig);
 
-    const sqlQuery = `INSERT INTO Books (title, author) VALUES (@title, @author); SELECT SCOPE_IDENTITY() AS id;`; // Retrieve ID of inserted record
+    // 'SCOPE_IDENTITY()' = SQL function that takes the id of the last thing it made. That is why we choose to take it as id. 
+    // btw, it is INSERT executed & done alrdy, then SELECT SCOPE.... as id.
+    const sqlQuery = `INSERT INTO Books (title, author) VALUES (@title, @author); SELECT SCOPE_IDENTITY() AS id;`; 
 
     const request = connection.request();
     request.input("title", newBookData.title);
@@ -22,7 +24,10 @@ class Book {
     connection.close();
 
     // Retrieve the newly created book using its ID
-    return this.getBookById(result.recordset[0].id);
+    return this.getBookById(result.recordset[0].id); // need 'result.recordset[0].id' & not just id is bc of assitional safety, in case got some error where SQL is wrong or smt... but if you want to use just 'id', also works fine.
+
+    // 'this.' ==> will return details of the book as a Book instance
+    // without 'this.' ==> will just plainly return details of book
   }
 }
 

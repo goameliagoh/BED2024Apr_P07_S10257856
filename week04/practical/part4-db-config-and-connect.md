@@ -41,10 +41,10 @@ const dbConfig = require("./dbConfig"); // TO IMPORT YOUR DATABASE'S DETAILS IN 
 const app = express();
 const port = process.env.PORT || 3000; // Use environment variable or default port
 
-app.listen(port, async () => {
+app.listen(port, async () => { // App using express framework will listen on the port for reqs that can be sent @ the same time (bc ASYNC!)
   try {
     // Connect to the database
-    await sql.connect(dbConfig);
+    await sql.connect(dbConfig); // recap: code will not run until sql server connected to database.
     console.log("Database connection established successfully");
   } catch (err) {
     console.error("Database connection error:", err);
@@ -56,10 +56,10 @@ app.listen(port, async () => {
 });
 
 // Close the connection pool on SIGINT signal
-process.on("SIGINT", async () => {
+process.on("SIGINT", async () => { // 'SIGINT' is signal sent to OS when user enters ctrl + c ==> used to shut down terminal
   console.log("Server is gracefully shutting down");
   // Perform cleanup tasks (e.g., close database connections)
-  await sql.close();
+  await sql.close(); 
   console.log("Database connection closed");
   process.exit(0); // Exit with code 0 indicating successful shutdown
 });
