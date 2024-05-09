@@ -7,17 +7,19 @@ This step focuses on creating a configuration file for your database credentials
 In the root directory of your project (`books-api-mvc-db`), create a file named `dbConfig.js` with the following content:
 
 ```javascript
+//------------------------- TO EXPORT YOUR DATABASE ---------------------------------------------
 module.exports = {
-  user: "username", // Replace with your SQL Server login username
-  password: "password", // Replace with your SQL Server login password
+  user: "username", // Replace with your SQL Server login username aka the security login thingy
+  password: "password", // Replace with your SQL Server login password 
   server: "localhost",
-  database: "bed_db",
+  database: "bed_db", //Your database name!
   trustServerCertificate: true,
   options: {
     port: 1433, // Default SQL Server port
     connectionTimeout: 60000, // Connection timeout in milliseconds
   },
 };
+//---------------------------------------------------------------------------------------------------
 ```
 
 **Explanation:**
@@ -33,8 +35,8 @@ Import the `dbConfig` object in your `app.js` file and use it to establish the d
 
 ```javascript
 const express = require("express");
-const sql = require("mssql"); // Assuming you've installed mssql
-const dbConfig = require("./dbConfig");
+const sql = require("mssql"); // TO IMPORT THE SQL SOFTWARE
+const dbConfig = require("./dbConfig"); // TO IMPORT YOUR DATABASE'S DETAILS IN CODE 
 
 const app = express();
 const port = process.env.PORT || 3000; // Use environment variable or default port
