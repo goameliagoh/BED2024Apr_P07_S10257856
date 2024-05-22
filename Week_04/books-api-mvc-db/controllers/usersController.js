@@ -79,8 +79,22 @@ class UserController {
           console.error(error);
           res.status(500).json({ message: "Error searching users" });
         }
-    }  
+    } 
+    
+    
+    //NEW FUNCTION AGAIN....!!
+    static async getUsersWithBooks(req, res){
+        try {
+            const users = await User.getUsersWithBooks();
+            res.json(users);
+          } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: "Error fetching users with books" });
+          }
+    }
+
   }
+
   
 
 /* --------- CAN CHOOSE TO IMPORT LIKE THAT BC ALL METHODS IN CONTROLLER ARE UNDER 'UserController{'-------

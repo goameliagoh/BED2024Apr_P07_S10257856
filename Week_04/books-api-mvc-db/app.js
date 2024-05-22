@@ -40,6 +40,8 @@ app.get("/users/:id", usersController.getUserById); // Get user by ID
 app.put("/users/:id", usersController.updateUser); // Update user
 app.delete("/users/:id", usersController.deleteUser); // Delete user
 app.get("/users/search", usersController.searchUsers); // NEW FUNCTION of search..
+app.get("/users/with-books", usersController.getUsersWithBooks); //NEW FUNCTION of getting users with books...
+
 
 
 app.listen(port, async () => { // App using express framework will listen on the port for reqs that can be sent @ the same time (bc ASYNC!)
