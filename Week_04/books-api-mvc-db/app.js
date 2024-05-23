@@ -39,8 +39,8 @@ app.get("/users", usersController.getAllUsers); // Get all users
 app.get("/users/:id", usersController.getUserById); // Get user by ID
 app.put("/users/:id", usersController.updateUser); // Update user
 app.delete("/users/:id", usersController.deleteUser); // Delete user
-app.get("/users/search", usersController.searchUsers); // NEW FUNCTION of search..
-app.get("/users/with-books", usersController.getUsersWithBooks); //NEW FUNCTION of getting users with books...
+router.get("/users/search", usersController.searchUsers); // NEW FUNCTION of search..
+router.get("/users/with-books", usersController.getUsersWithBooks); //NEW FUNCTION of getting users with books...
 
 
 
