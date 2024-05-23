@@ -18,8 +18,9 @@ INSERT INTO UserBooks (user_id, book_id)
 VALUES
   (1, 1),  -- User 1 has book 1
   (1, 2),  -- User 1 has book 2
-  (1, 4),  -- User 1 has book 4
-  (2, 3),  -- User 2 has book 3
-  (2, 5),  -- User 2 has book 5
+  (1, 8),  -- User 1 has book 8
+  (2, 7),  -- User 2 has book 7
+  (2, 9),  -- User 2 has book 9 
   (3, 1),  -- User 3 has book 1
-  (3, 6);  -- User 3 has book 6
+  (3, 10);  -- User 3 has book 10
+

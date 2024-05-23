@@ -2,7 +2,14 @@ const User = require("../models/user");  //import methods and also the User clas
 
 class UserController {
     static async createUser(req, res) {
+      
       const newUser = req.body;
+
+      // Validate that the username is provided
+      if (!newUser.username) {
+        return res.status(400).json({ error: "Username is required." });
+      }
+            
       try {
         const createdUser = await User.createUser(newUser);
         res.status(201).json(createdUser);

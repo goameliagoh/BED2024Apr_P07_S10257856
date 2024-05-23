@@ -9,10 +9,16 @@ class User {
     }
 
     static async createUser(user){ //the 'user' is aka the newUserData interactor will enter
+
+        // Validate that the username is provided
+      if (!user.username) {
+        throw new Error("Username is required.");
+      }
+
         const connection = await sql.connect(dbConfig);
     
-        const sqlQuery =  `INSERT INTO Users (username, email) VALUES (@username, @email); SELECT SCOPE_IDENTITY AS id;`;
-        
+        const sqlQuery =  `INSERT INTO Users (username, email) VALUES (@username, @email); SELECT SCOPE_IDENTITY() AS id;`;
+                
         const request = connection.request();
         request.input("username", user.username);
         request.input("email", user.email);
